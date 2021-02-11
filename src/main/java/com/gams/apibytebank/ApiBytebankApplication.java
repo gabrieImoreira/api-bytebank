@@ -1,5 +1,6 @@
 package com.gams.apibytebank;
 
+import com.gams.apibytebank.model.Client;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,4 +19,5 @@ public class ApiBytebankApplication {
         SpringApplication.run(ApiBytebankApplication.class, args);
     }
 
+    Client client = new Client();
 }
