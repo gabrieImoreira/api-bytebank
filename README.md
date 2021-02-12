@@ -1,3 +1,5 @@
-# api-bytebank
+# API-BYTEBANK
 
-DESAFIO API REST PICPAY
+Consumo de transações utilizando API REST e Spring Boot
+
+Em construção...
