@@ -1,9 +1,6 @@
 package com.gams.apibytebank.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,26 +10,28 @@ public class Account implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
-    private Long number;
+    private Long id;
+    private Integer number;
     private Double balance;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Client client;
 
     public Account() {
     }
 
-    public Account(Integer id, Long number, Double balance, Client client) {
+    public Account(Long id, Integer number, Double balance, Client client) {
         this.id = id;
         this.number = number;
         this.balance = balance;
         this.client = client;
     }
 
-    public Long getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 

@@ -2,11 +2,10 @@ package com.gams.apibytebank.model;
 
 import com.gams.apibytebank.model.enums.TypeClient;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +20,10 @@ public class Client implements Serializable {
     private String email;
     private String occupation;
     private Integer type;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Account> accounts = new ArrayList<>();
 
 
     public Client(Long id, String name, String cpfOrCnpj, String email, String occupation, TypeClient type) {
@@ -84,6 +87,22 @@ public class Client implements Serializable {
         this.occupation = occupation;
     }
 
+//    public Account getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(Account account) {
+//        this.account = account;
+//    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,6 +121,8 @@ public class Client implements Serializable {
                 this.cpfOrCnpj + ", email: "  + this.email + ", ocupação: " + this.occupation +
                 ", tipo do cliente: " + this.type + ".";
     }
+
+
 }
 
 
