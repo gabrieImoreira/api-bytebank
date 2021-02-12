@@ -18,21 +18,22 @@ public class Client implements Serializable {
     private Long id;
     private String name;
     private String cpfOrCnpj;
-    private String password;
+    private String email;
     private String occupation;
     private Integer type;
 
-    public Client(){
 
-    }
-
-    public Client(Long id, String name, String cpfOrCnpj, String password, String occupation, TypeClient type) {
+    public Client(Long id, String name, String cpfOrCnpj, String email, String occupation, TypeClient type) {
         this.id = id;
         this.name = name;
         this.cpfOrCnpj = cpfOrCnpj;
-        this.password = password;
+        this.email = email;
         this.occupation = occupation;
         this.type = type.getCod();
+    }
+
+    public Client() {
+
     }
 
     public Long getId() {
@@ -59,12 +60,12 @@ public class Client implements Serializable {
         this.cpfOrCnpj = cpfOrCnpj;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String password) {
+        this.email = password;
     }
 
     public TypeClient getType() {
@@ -88,12 +89,18 @@ public class Client implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) && Objects.equals(name, client.name) && Objects.equals(cpfOrCnpj, client.cpfOrCnpj) && Objects.equals(password, client.password) && Objects.equals(occupation, client.occupation) && Objects.equals(type, client.type);
+        return Objects.equals(id, client.id) && Objects.equals(name, client.name) && Objects.equals(cpfOrCnpj, client.cpfOrCnpj) && Objects.equals(email, client.email) && Objects.equals(occupation, client.occupation) && Objects.equals(type, client.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, cpfOrCnpj, password, occupation, type);
+        return Objects.hash(id, name, cpfOrCnpj, email, occupation, type);
+    }
+
+    public String toString() {
+        return "Informações do cliente, ID: " + this.id + ", nome: " + this.name + ", CPF/CNPJ: " +
+                this.cpfOrCnpj + ", email: "  + this.email + ", ocupação: " + this.occupation +
+                ", tipo do cliente: " + this.type + ".";
     }
 }
 
