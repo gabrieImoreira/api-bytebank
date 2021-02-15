@@ -27,6 +27,14 @@ public class Account implements Serializable {
         this.client = client;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Integer getNumber() {
         return number;
     }

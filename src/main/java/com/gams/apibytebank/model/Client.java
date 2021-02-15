@@ -1,6 +1,7 @@
 package com.gams.apibytebank.model;
 
 import com.gams.apibytebank.model.enums.TypeClient;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,7 +21,6 @@ public class Client implements Serializable {
     private String email;
     private String occupation;
     private Integer type;
-
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Account> accounts = new ArrayList<>();
