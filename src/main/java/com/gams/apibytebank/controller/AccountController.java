@@ -2,36 +2,37 @@ package com.gams.apibytebank.controller;
 
 import com.gams.apibytebank.controller.dto.AccountDto;
 import com.gams.apibytebank.model.Account;
-import com.gams.apibytebank.model.Client;
-import com.gams.apibytebank.model.enums.TypeClient;
 import com.gams.apibytebank.repository.AccountRepository;
-import com.gams.apibytebank.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping(value="account")
 public class AccountController {
 
     @Autowired
     private AccountRepository accountRepository;
 
+    @GetMapping
+    public List<AccountDto> toList() {
+        List<Account> accounts = accountRepository.findAll();
+        return AccountDto.convert(accounts);
+    }
 
-    @RequestMapping(value="account")
-    public List<AccountDto> toList(){
-        Client cli1 = new Client(1, "Robert A Heinlein", "48795782", "robert@boostrap.com","Writer", TypeClient.PF);
-        Client cli2 = new Client(2, "Linus Torvalds", "79848", "linus@mint.com","Programmer", TypeClient.PJ);
-
-        Account acc1 = new Account(1,2970 , 800.00, cli1);
-        Account acc2 = new Account(3, 0007, 8000.00, cli2);
-
-
-        return AccountDto.convert(Arrays.asList(acc1, acc2));
-
+    @GetMapping(value = "/{id}") //return dto
+    public ResponseEntity<AccountDto> find(@PathVariable Integer id) { //@Path is to 'linkar' the id above
+        Optional<Account> acc = accountRepository.findById(id); //connected with @AutowiredClient service above
+        if (acc.isPresent()) {
+            return ResponseEntity.ok(new AccountDto(acc.get())); //return the response and found obj
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

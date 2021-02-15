@@ -44,16 +44,12 @@ public class ApiBytebankApplication implements CommandLineRunner {
         Client cli1 = new Client(null, "Robert A Heinlein", "48795782", "robert@boostrap.com","Writer", TypeClient.PF);
         Client cli2 = new Client(null, "Linus Torvalds", "79848", "linus@mint.com","Programmer", TypeClient.PJ);
 
-        Account acc1 = new Account(null,2970 , 800.00, cli1);
-        Account acc2 = new Account(null, 0007, 8000.00, cli2);
+        Account acc1 = new Account(null,2970 , 800.00, cli2);
+        Account acc2 = new Account(null, 0007, 8000.00, cli1);
 
-        cli1.setAccounts(Arrays.asList(acc1));
-        cli2.setAccounts(Arrays.asList(acc2));
+//        cli1.setAccounts(Arrays.asList(acc1));
+//        cli2.setAccounts(Arrays.asList(acc2));
 
-
-//        System.out.println(acc1);
-//        System.out.println(acc2);
-//        System.out.println("CONTASSSSSSS:"+ cli1.getAccounts());
 
         accountRepository.saveAll(Arrays.asList(acc1,acc2));
         clientRepository.saveAll(Arrays.asList(cli1, cli2));

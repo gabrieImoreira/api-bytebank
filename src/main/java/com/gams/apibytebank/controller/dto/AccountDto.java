@@ -3,21 +3,23 @@ package com.gams.apibytebank.controller.dto;
 import com.gams.apibytebank.model.Account;
 import com.gams.apibytebank.model.Client;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AccountDto {
+public class AccountDto implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Integer id;
     private Integer number;
     private Double balance;
-    private Client client;
+    private Integer client;
 
     public AccountDto(Account account) {
         this.id = account.getId();
         this.number = account.getNumber();
         this.balance = account.getBalance();
-        this.client = account.getClient();
+        this.client = account.getClient().getId();
     }
 
     public Integer getId() {
@@ -32,7 +34,7 @@ public class AccountDto {
         return balance;
     }
 
-    public Client getClient() {
+    public Integer getClient() {
         return client;
     }
 
