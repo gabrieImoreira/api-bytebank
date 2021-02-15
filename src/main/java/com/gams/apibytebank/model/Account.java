@@ -10,28 +10,28 @@ public class Account implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private Integer number;
     private Double balance;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Client client;
 
     public Account() {
     }
 
-    public Account(Long id, Integer number, Double balance, Client client) {
+    public Account(Integer id, Integer number, Double balance, Client client) {
         this.id = id;
         this.number = number;
         this.balance = balance;
         this.client = client;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -48,6 +49,7 @@ public class ApiBytebankApplication implements CommandLineRunner {
 
         cli1.setAccounts(Arrays.asList(acc1));
         cli2.setAccounts(Arrays.asList(acc2));
+
 
 //        System.out.println(acc1);
 //        System.out.println(acc2);

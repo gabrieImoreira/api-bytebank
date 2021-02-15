@@ -15,18 +15,18 @@ public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     private String cpfOrCnpj;
     private String email;
     private String occupation;
     private Integer type;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Account> accounts = new ArrayList<>();
 
 
-    public Client(Long id, String name, String cpfOrCnpj, String email, String occupation, TypeClient type) {
+    public Client(Integer id, String name, String cpfOrCnpj, String email, String occupation, TypeClient type) {
         this.id = id;
         this.name = name;
         this.cpfOrCnpj = cpfOrCnpj;
@@ -39,11 +39,11 @@ public class Client implements Serializable {
 
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
