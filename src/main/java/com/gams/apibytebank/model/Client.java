@@ -1,5 +1,7 @@
 package com.gams.apibytebank.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gams.apibytebank.controller.dto.AccountDto;
 import com.gams.apibytebank.model.enums.TypeClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 
@@ -22,9 +24,9 @@ public class Client implements Serializable {
     private String occupation;
     private Integer type;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "client")
     private List<Account> accounts = new ArrayList<>();
-
 
     public Client(Integer id, String name, String cpfOrCnpj, String email, String occupation, TypeClient type) {
         this.id = id;
@@ -103,17 +105,21 @@ public class Client implements Serializable {
         this.accounts = accounts;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) && Objects.equals(name, client.name) && Objects.equals(cpfOrCnpj, client.cpfOrCnpj) && Objects.equals(email, client.email) && Objects.equals(occupation, client.occupation) && Objects.equals(type, client.type);
+        return Objects.equals(id, client.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, cpfOrCnpj, email, occupation, type);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
 
     public String toString() {

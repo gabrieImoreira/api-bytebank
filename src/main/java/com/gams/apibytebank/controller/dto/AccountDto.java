@@ -1,7 +1,6 @@
 package com.gams.apibytebank.controller.dto;
 
 import com.gams.apibytebank.model.Account;
-import com.gams.apibytebank.model.Client;
 
 import java.io.Serializable;
 import java.util.List;

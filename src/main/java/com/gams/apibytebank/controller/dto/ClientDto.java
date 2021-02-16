@@ -3,7 +3,10 @@ package com.gams.apibytebank.controller.dto;
 import com.gams.apibytebank.model.Account;
 import com.gams.apibytebank.model.Client;
 import com.gams.apibytebank.model.enums.TypeClient;
+import com.gams.apibytebank.repository.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,8 +20,9 @@ public class ClientDto implements Serializable {
     private String email;
     private String occupation;
     private TypeClient type;
-    private List<Account> account;
-
+    private List<Integer> account;
+    
+    
     public ClientDto(Client client){
         this.id = client.getId();
         this.name = client.getName();
@@ -26,7 +30,8 @@ public class ClientDto implements Serializable {
         this.email = client.getEmail();
         this.occupation = client.getOccupation();
         this.type = client.getType();
-        this.account = client.getAccounts();
+        this.account = client.getAccounts().stream().map(Account::getId).collect(Collectors.toList());;
+
     }
 
     public Integer getId() {
@@ -53,7 +58,7 @@ public class ClientDto implements Serializable {
         return type;
     }
 
-    public List<Account> getAccount() {
+    public List <Integer> getAccount() {
         return account;
     }
 

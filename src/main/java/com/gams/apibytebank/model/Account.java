@@ -14,7 +14,8 @@ public class Account implements Serializable {
     private Integer number;
     private Double balance;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
     private Client client;
 
     public Account() {
@@ -64,11 +65,14 @@ public class Account implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals(number, account.number) && Objects.equals(balance, account.balance) && Objects.equals(client, account.client);
+        return Objects.equals(id, account.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, balance, client);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
 }
