@@ -68,9 +68,5 @@ public class ApiBytebankApplication implements CommandLineRunner {
         clientRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4, cli5));
         accountRepository.saveAll(Arrays.asList(acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9));
 
-
-
-
-
     }
 }

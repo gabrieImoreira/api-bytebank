@@ -45,10 +45,13 @@ public class ClientService {
         return repo.findAll();
     }
 
+    public Client fromDTO(ClientDto objDto) {
+        return new Client(objDto.getId(), objDto.getName(), null
+                , objDto.getEmail(), objDto.getOccupation(), objDto.getType());
+    }
+
     private void updateData(Client newObj, Client obj) {
         newObj.setName(obj.getName());
         newObj.setEmail(obj.getEmail());
-        newObj.setOccupation(obj.getOccupation());
-        newObj.setType(obj.getType());
     }
 }

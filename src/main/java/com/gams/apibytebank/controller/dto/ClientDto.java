@@ -4,9 +4,12 @@ import com.gams.apibytebank.model.Account;
 import com.gams.apibytebank.model.Client;
 import com.gams.apibytebank.model.enums.TypeClient;
 import com.gams.apibytebank.repository.ClientRepository;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,8 +18,14 @@ public class ClientDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    @Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
     private String name;
     private String cpfOrCnpj;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    @Email
     private String email;
     private String occupation;
     private TypeClient type;
@@ -30,11 +39,10 @@ public class ClientDto implements Serializable {
         this.email = client.getEmail();
         this.occupation = client.getOccupation();
         this.type = client.getType();
-<<<<<<< HEAD
         this.account = client.getAccounts().stream().map(Account::getId).collect(Collectors.toList()); //restore account id
-=======
-        this.account = client.getAccounts().stream().map(Account::getId).collect(Collectors.toList());;
->>>>>>> b74e87391a8b04bed28f8dd297d365d4f778f33a
+    }
+
+    public ClientDto() {
 
     }
 
