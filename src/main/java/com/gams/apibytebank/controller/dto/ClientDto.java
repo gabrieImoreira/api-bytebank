@@ -30,7 +30,11 @@ public class ClientDto implements Serializable {
         this.email = client.getEmail();
         this.occupation = client.getOccupation();
         this.type = client.getType();
+<<<<<<< HEAD
         this.account = client.getAccounts().stream().map(Account::getId).collect(Collectors.toList()); //restore account id
+=======
+        this.account = client.getAccounts().stream().map(Account::getId).collect(Collectors.toList());;
+>>>>>>> b74e87391a8b04bed28f8dd297d365d4f778f33a
 
     }
 
