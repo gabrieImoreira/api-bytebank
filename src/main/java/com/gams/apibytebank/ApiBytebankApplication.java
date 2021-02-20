@@ -43,16 +43,31 @@ public class ApiBytebankApplication implements CommandLineRunner {
 
         Client cli1 = new Client(null, "Robert A Heinlein", "48795782", "robert@boostrap.com","Writer", TypeClient.PF);
         Client cli2 = new Client(null, "Linus Torvalds", "79848", "linus@mint.com","Programmer", TypeClient.PJ);
-
-        Account acc1 = new Account(null,2970 , 800.00, cli2);
-        Account acc2 = new Account(null, 0007, 8000.00, cli1);
-
-//        cli1.setAccounts(Arrays.asList(acc1));
-//        cli2.setAccounts(Arrays.asList(acc2));
+        Client cli3 = new Client(null, "George Hotz", "1234567", "geohot@siemens.com","Software Dev", TypeClient.PJ);
+        Client cli4 = new Client(null, "Gabriel Moreira", "4444", "gams@tesla.com","Engineer", TypeClient.PF);
+        Client cli5 = new Client(null, "Ana Beatriz", "121416", "anab@fox.com","Physicist", TypeClient.PJ);
 
 
-        accountRepository.saveAll(Arrays.asList(acc1,acc2));
-        clientRepository.saveAll(Arrays.asList(cli1, cli2));
+        Account acc1 = new Account(null,2970 , 800.00, cli1);
+        Account acc2 = new Account(null, 0007, 8000.00, cli2);
+        Account acc3 = new Account(null, 1993, 869.20, cli3);
+        Account acc4 = new Account(null, 4312, 1268468.95, cli4);
+        Account acc5 = new Account(null, 1234, 8.00, cli4);
+        Account acc6 = new Account(null, 1597, 126712.10, cli4);
+        Account acc7 = new Account(null, 593, 826862.07, cli2);
+        Account acc8 = new Account(null, 516, 3200.00, cli3);
+        Account acc9 = new Account(null, 1012, 12000.51, cli5);
+
+
+        cli1.getAccounts().addAll(Arrays.asList(acc1));
+        cli2.getAccounts().addAll(Arrays.asList(acc2, acc7));
+        cli3.getAccounts().addAll(Arrays.asList(acc3, acc8));
+        cli4.getAccounts().addAll(Arrays.asList(acc4, acc5, acc6));
+        cli5.getAccounts().addAll(Arrays.asList(acc9));
+
+        clientRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4, cli5));
+        accountRepository.saveAll(Arrays.asList(acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9));
+
 
 
 
