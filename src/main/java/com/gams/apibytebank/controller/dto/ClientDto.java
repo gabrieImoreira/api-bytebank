@@ -3,11 +3,8 @@ package com.gams.apibytebank.controller.dto;
 import com.gams.apibytebank.model.Account;
 import com.gams.apibytebank.model.Client;
 import com.gams.apibytebank.model.enums.TypeClient;
-import com.gams.apibytebank.repository.ClientRepository;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
