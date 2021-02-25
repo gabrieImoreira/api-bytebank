@@ -2,7 +2,6 @@ package com.gams.apibytebank.service;
 
 import com.gams.apibytebank.controller.dto.AccountDto;
 import com.gams.apibytebank.model.Account;
-import com.gams.apibytebank.model.Client;
 import com.gams.apibytebank.repository.AccountRepository;
 import com.gams.apibytebank.service.exceptions.DataIntegrityException;
 import com.gams.apibytebank.service.exceptions.ObjectNotFoundException;
@@ -28,6 +27,16 @@ public class AccountService {
         Account newObj = search(obj.getId()); //verify if exists id
         updateData(newObj, obj);
         return repo.save(newObj);
+    }
+
+    public void delete(Integer id) {
+        search(id);
+        try {
+            repo.deleteById(id);
+        }
+        catch(DataIntegrityViolationException e) {
+            throw new DataIntegrityException("Não é possível excluir pq há entidades relacionadas");
+        }
     }
 
     public Account fromDTO(AccountDto objDto) {

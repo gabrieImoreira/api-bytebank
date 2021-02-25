@@ -14,7 +14,7 @@ public class Account implements Serializable {
     private Integer number;
     private Double balance;
 
-    @ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 

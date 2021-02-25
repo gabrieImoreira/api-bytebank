@@ -1,6 +1,5 @@
 package com.gams.apibytebank.controller.dto;
 
-import com.gams.apibytebank.model.enums.TypeClient;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
