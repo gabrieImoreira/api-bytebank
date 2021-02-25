@@ -1,9 +1,7 @@
 package com.gams.apibytebank.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gams.apibytebank.controller.dto.AccountDto;
 import com.gams.apibytebank.model.enums.TypeClient;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -127,7 +125,6 @@ public class Client implements Serializable {
                 this.cpfOrCnpj + ", email: "  + this.email + ", ocupação: " + this.occupation +
                 ", tipo do cliente: " + this.type + ".";
     }
-
 
 }
 
