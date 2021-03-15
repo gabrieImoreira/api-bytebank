@@ -2,8 +2,6 @@ package com.gams.apibytebank.controller.dto;
 
 import com.gams.apibytebank.model.Client;
 
-import javax.persistence.EmbeddedId;
-import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -27,7 +25,7 @@ public class AccountNewDto implements Serializable {
         this.number = number;
         this.balance = balance;
         this.client = client;
-    }
+    }                                       
 
     public Integer getNumber() {
         return number;
@@ -48,5 +46,4 @@ public class AccountNewDto implements Serializable {
     public Client getClient() {
         return client;
     }
-
 }

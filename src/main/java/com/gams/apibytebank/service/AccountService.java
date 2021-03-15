@@ -24,6 +24,7 @@ public class AccountService {
     public Account insert(Account obj) {
         obj.setId(null);
         return repo.save(obj);
+
     }
 
     public Account search(Integer id) {

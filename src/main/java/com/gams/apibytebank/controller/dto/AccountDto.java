@@ -24,7 +24,7 @@ public class AccountDto implements Serializable {
         this.id = account.getId();
         this.number = account.getNumber();
         this.balance = account.getBalance();
-        this.client = (account.getClient() == null) ? null : account.getClient().getId();
+        this.client = (account.getClient() == null) ? null : account.getClient();
     }
 
     public AccountDto(){
